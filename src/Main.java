@@ -1,63 +1,56 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
-       /* Scanner scanner = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
+        Task task;
+        Epic epic;
+        Subtask subtask;
 
-        while (true) {
-            printMenu();
-            int input = scanner.nextInt();
-            if (input == 1) {
-                System.out.println("Ок, ща создам");
-            } else if (input == 2) {
-                while (true) {
-                    System.out.println("Выберите опцию:");
-                    System.out.println("1 - получить список всех задач");
-                    System.out.println("2 - получить список задач по идентификатору(id)");
-                    int input2 = scanner.nextInt();
-                    if (input2 == 1) {
-                        System.out.println("Ок");
-                        break;
-                    } else if (input2 == 2) {
-                        System.out.println("Ок2");
-                        break;
-                    } else {
-                        System.out.println("Неправильный ввод.");
-                    }
-                }
-            } else if (input == 3) {
-                while (true) {
-                    System.out.println("Выберите опцию:");
-                    System.out.println("1 - удалить все задачи");
-                    System.out.println("2 - удалить задачу по идентификатору(id)");
-                    int input3 = scanner.nextInt();
-                    if (input3 == 1) {
-                        System.out.println("Ок");
-                        break;
-                    } else if (input3 == 2) {
-                        System.out.println("Ок2");
-                        break;
-                    } else {
-                        System.out.println("Неправильный ввод.");
-                    }
-                }
-            } else if (input == 0) {
-                System.out.println("До свидания!");
-                        break;
-            } else {
-                System.out.println("Неправильный ввод.");
-            }
-        }
-    }
 
-    public static void printMenu() {
-        System.out.println("Выберите желаемое действие:");
-        System.out.println("1 - Создать задачу");
-        System.out.println("2 - Посмотреть список задач");
-        System.out.println("3 - Удаление задач");
-        System.out.println("0 - Выход");
-    } */
+        //Тестирование
+        //1. Создайте 2 задачи, один эпик с 2 подзадачами, а другой эпик с 1 подзадачей.
+        task = new Task("Почитать", "Гарри Поттера", "NEW");
+        taskManager.createNewTask(task);
+        task = new Task("Отдохнуть", "Полежать на диване", "NEW");
+        taskManager.createNewTask(task);
+
+        epic = new Epic("Посмотреть летом", "фильмы", "New");
+        taskManager.createNewEpic(epic);
+        subtask = new Subtask("Гарри Поттер", "все части","New",3);
+        taskManager.createNewSubtask(subtask);
+        subtask = new Subtask("Властелин колец", "все части", "NEW",3);
+        taskManager.createNewSubtask(subtask);
+
+        epic = new Epic("Посетить культурные места","в разных городах","NEW");
+        taskManager.createNewEpic(epic);
+        subtask = new Subtask("В Москве","Третьяковская галерея","NEW",6);
+        taskManager.createNewSubtask(subtask);
+
+        System.out.println("Тест 2:");
+        //2. Распечатайте списки эпиков, задач и подзадач
+        taskManager.getTaskList();
+        taskManager.getEpicList();
+        taskManager.getSubtaskList();
+
+        System.out.println("Тест 3:");
+        //3. Измените статусы созданных объектов, распечатайте.
+        task = new Task("Почитать", "Гарри Поттера", "DONE");
+        taskManager.updateTask(task);
+        subtask = new Subtask("Властелин колец", "все части", "IN PROGRESS",3);
+        taskManager.updateSubtask(subtask);
+
+        taskManager.getTaskList();
+        taskManager.getEpicList();
+        taskManager.getSubtaskList();
+
+        System.out.println("Тест 4:");
+        //4. И, наконец, попробуйте удалить одну из задач и один из эпиков.
+        taskManager.deleteEpicFromId(6);
+        taskManager.deleteTaskFromId(2);
+
+        taskManager.getTaskList();
+        taskManager.getEpicList();
+        taskManager.getSubtaskList();
+
     }
 }
