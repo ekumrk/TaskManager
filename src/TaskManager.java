@@ -36,20 +36,8 @@ public class TaskManager {
         }
     }
 
-    public void getTaskFromId(int id) {
-        if (!tasks.containsKey(id) || tasks.isEmpty()) {
-            System.out.println("Задача с таким идентификатором не найдена или список задач пуст.");
-        } else {
-            for (Integer taskId : tasks.keySet()) {
-                if (taskId == id) {
-                    Task task = tasks.get(taskId);
-                    System.out.println("Вы выбрали задание с ID №: " + task.id);
-                    System.out.println(task.title);
-                    System.out.println(task.content);
-                    System.out.println("Статус задания: " + task.status);
-                }
-            }
-        }
+    public Task getTaskFromId(int id) {
+        return tasks.get(id);
     }
 
     public void deleteTaskFromId(int id) {
@@ -72,20 +60,8 @@ public class TaskManager {
         return epicArrayList;
     }
 
-    public void getEpicFromId(int id) {
-        if (!epics.containsKey(id) || epics.isEmpty()) {
-            System.out.println("Эпик с таким идентификатором не найден или список эпиков пуст.");
-        } else {
-            for (Integer epId : epics.keySet()) {
-                if (epId == id) {
-                    Epic epic = epics.get(epId);
-                    System.out.println("Вы выбрали эпик с ID №: " + epic.id);
-                    System.out.println(epic.title);
-                    System.out.println(epic.content);
-                    System.out.println("Статус задания: " + epic.status);
-                }
-            }
-        }
+    public Epic getEpicFromId(int id) {
+        return epics.get(id);
     }
 
     public void getEpicsSubtasksFromId (int id) {
@@ -201,21 +177,8 @@ public class TaskManager {
         }
     }
 
-    public void getSubtaskFromId(int id) {
-        if (!subtasks.containsKey(id) || subtasks.isEmpty()) {
-            System.out.println("Подзадача с таким идентификатором не найдена или список задач пуст.");
-        } else {
-            for (Integer subtaskId : subtasks.keySet()) {
-                if (subtaskId == id) {
-                    Subtask subtask = subtasks.get(subtaskId);
-                    System.out.println("Вы выбрали задание с ID №: " + subtask.id);
-                    System.out.println(subtask.title);
-                    System.out.println(subtask.content);
-                    System.out.println("Статус задания: " + subtask.status);
-                    System.out.println("Принадлежит эпику с ID: " + subtask.epicId);
-                }
-            }
-        }
+    public Subtask getSubtaskFromId(int id) {
+        return subtasks.get(id);
     }
 
     public void deleteSubtaskFromID(int id) {
