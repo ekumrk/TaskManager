@@ -2,12 +2,11 @@ public class Task {
     protected int id;
     protected String title;
     protected String content;
-    protected String status;
+    protected String status = "NEW";
 
-    public Task (String title, String content, String status) {
+    public Task (String title, String content) {
         this.title = title;
         this.content = content;
-        this.status = status;
     }
 
     public int getId() {
@@ -15,6 +14,11 @@ public class Task {
     }
 
     public void setId(int id) {
+
         this.id = id;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
