@@ -9,11 +9,11 @@ public class Epic extends Task {
     }
 
     public ArrayList<Integer> getSubtasksId() {
-        System.out.println(subtasksId);
         return subtasksId;
     }
 
     public void setStatus(String status) {
+
         this.status = status;
     }
 }
