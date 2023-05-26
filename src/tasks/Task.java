@@ -1,3 +1,5 @@
+package tasks;
+
 public class Task {
     protected int id;
     protected String title;
@@ -18,7 +20,12 @@ public class Task {
         this.id = id;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setStatus(String status) {
+
         this.status = status;
     }
 }

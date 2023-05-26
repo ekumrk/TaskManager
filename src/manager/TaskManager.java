@@ -1,3 +1,6 @@
+package manager;
+import tasks.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -71,7 +74,7 @@ public class TaskManager {
 
     public void deleteEpicFromId(int id) {
         Epic epic = epics.remove(id);
-        for (Integer subtaskId : epic.subtasksId) {
+        for (Integer subtaskId : epic.getSubtasksId()) {
             subtasks.remove(subtaskId);
         }
     }
@@ -82,11 +85,11 @@ public class TaskManager {
         nextId++;
         subtasks.put(subtask.getId(), subtask);
 
-        Epic epic = epics.get(subtask.epicId);
+        Epic epic = epics.get(subtask.getEpicId());
         if (epic == null) {
             return null;
         }
-        epic.subtasksId.add(subtask.id);
+        epic.getSubtasksId().add(subtask.getId());
         updateEpicStatus(epic);
         return (subtask.getId());
     }
@@ -99,7 +102,8 @@ public class TaskManager {
 
     public void deleteAllSubtasks() {
         for (Epic epic : epics.values()) {
-            epic.subtasksId.clear();
+            epic.getSubtasksId().clear();
+            updateEpicStatus(epic);
         }
         subtasks.clear();
     }
@@ -109,14 +113,14 @@ public class TaskManager {
 
         for (Integer subTaskId : epic.getSubtasksId()) {
             Subtask subTs = subtasks.get(subTaskId);
-            if (subTs.status.equals("NEW")) {
+            if (subTs.getStatus().equals("NEW")) {
                 epic.setStatus("NEW");
-            } else if (subTs.status.equals("IN PROGRESS")) {
+            } else if (subTs.getStatus().equals("IN PROGRESS")) {
                 epic.setStatus("IN PROGRESS");
-                epicStatuses.add(subTs.status);
+                epicStatuses.add(subTs.getStatus());
                 break;
-            } else if (subTs.status.equals("DONE")) {
-                epicStatuses.add(subTs.status);
+            } else if (subTs.getStatus().equals("DONE")) {
+                epicStatuses.add(subTs.getStatus());
             }
         }
 
@@ -136,10 +140,10 @@ public class TaskManager {
         return subtasks.get(id);
     }
 
-    public void deleteSubtaskFromID(int id) {
+    public void deleteSubtaskFromId(int id) {
         for (Epic epic : epics.values()) {
-            if (epic.subtasksId.contains(id)) {
-                epic.subtasksId.remove(id);
+            if (epic.getSubtasksId().contains(id)) {
+                epic.getSubtasksId().remove(id);
                 updateEpicStatus(epic);
             }
             subtasks.remove(id);

@@ -1,3 +1,7 @@
+package tasks;
+
+import tasks.Task;
+
 import java.util.ArrayList;
 
 public class Epic extends Task {
@@ -16,4 +20,6 @@ public class Epic extends Task {
 
         this.status = status;
     }
+
+
 }
